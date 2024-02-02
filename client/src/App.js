@@ -1,25 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-
+import YourComponent from './components/main'
+import SignupPage1 from './components/mid'
+import Footer from './components/footer'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <YourComponent/>
+    <SignupPage1/>
+    <Footer/>
+    </>
+  )
 }
 
 export default App;
