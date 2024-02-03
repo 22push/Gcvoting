@@ -1,0 +1,28 @@
+.submit {
+    background-color: #55c2da;
+    color: rgb(28, 13, 13);
+    font-size: large;
+    font-weight: bolder;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: #4caf50;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 2 rem;
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .custom {
+      justify-content: center;
+    }
+  
+    .custom2 {
+      min-width: 60%;
+    }
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .custom2 {
+      min-width: 60%;
+    }
+  }
