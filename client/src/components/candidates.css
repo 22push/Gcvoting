@@ -1,6 +1,5 @@
-.submit {
+.submit12 {
   background-color: #55c2da;
-
   color: rgb(28, 13, 13);
   font-size: large;
   font-weight: bolder;
@@ -9,7 +8,9 @@
   border: #4caf50;
   border-radius: 10px;
   cursor: pointer;
-  width: 10rem;
+  width: 2 rem;
+  margin-left: 45vw;
+  margin-bottom: 3rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -17,13 +18,35 @@
     justify-content: center;
   }
 
+  .submit12 {
+    margin-left: 35vw;
+  }
+
   .custom2 {
-    min-width: 60%;
+    min-width: 80%;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .custom2 {
     min-width: 60%;
+  }
+  .submit12 {
+    margin-left: 45vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .custom3 {
+    min-width: 80%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .custom2 {
+    min-width: 90%;
+  }
+  .submit12 {
+    margin-left: 35vw;
   }
 }
