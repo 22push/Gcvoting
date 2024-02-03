@@ -1,30 +1,37 @@
 import './App.css';
-import { useState
- } from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { useState ,useEffect} from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Heropage from './pages/heropage';
 import LoginPage from './pages/loginpage';
 import Votingpage from './pages/votingpage';
-import Finalpage from './pages/finalpage'
+import Finalpage from './pages/finalpage';
 import { CandidateProvider } from './UI/createcontext';
-const router = createBrowserRouter([
-      { path:'/', element: <Heropage/> },
-      {path: 'login', element:<LoginPage />},
-      {path: 'vote', element:<Votingpage/>},
-])
+
+
+
 function App() {
+  const [dataFromChildB, setDataFromChildB] = useState(null);
+  const [branch ,setbranch ] = useState(null);
+  const handleDataFromChildB = (data) => {
+    console.log(data);
+    setDataFromChildB(data);
+  };
+  const handlebranchFromChildB = (data) => {
+    setbranch(data);
+  };
+  const router = createBrowserRouter([
+    { path: '/', element: <Heropage /> },
+    { path: 'login', element: <LoginPage sendDataToParent={handleDataFromChildB} sendbranchtoparent = {handlebranchFromChildB} /> },
+    { path: 'vote', element: <Votingpage senddatatochildA= {dataFromChildB} sendbranchtochildA= {branch} /> },
+  ]);
   return (
     <RouterProvider router={router}>
       <CandidateProvider>
-      {router}
+        {router}
       </CandidateProvider>
     </RouterProvider>
   );
-  
 }
 
 export default App;

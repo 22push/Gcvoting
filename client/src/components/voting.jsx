@@ -5,9 +5,23 @@ import image3 from "../assets/1mg3.jpeg";
 
 import "./candidates.css";
 
-function Candidates() {
+function Candidates({SenddatatochildB,sendbranchtochildB}) {
+  console.log(SenddatatochildB)
   const [selectedCand, setSelectedCand] = useState(null);
-
+  const branch = sendbranchtochildB
+  console.log(branch)
+  const branchFullForms = {
+    "EC": "Electrical Engineering",
+    "EE": "Electrical Engineering",
+    "ME": "Mechanical Engineering",
+    "CS": "Computer Science",
+    "CE": "Civil Engineering",
+    "MM": "Metallurgical and Materials Engineering",
+    "PHD": "Doctor of Philosophy",
+    "BSC": "Bachelor of Science",
+    "MTECH": "Master of Technology"
+  };
+  const branchname = branchFullForms[branch.toUpperCase()]
   const handleCheckboxChange = (event, roll) => {
     event.stopPropagation();
     console.log(roll);
@@ -18,36 +32,15 @@ function Candidates() {
     setSelectedCand(roll);
   };
 
-  const candidates = [
-    {
-      Name: "Candidate 1",
-      Roll: "Roll 1",
-      image: image1,
-    },
-    {
-      Name: "Candidate 2",
-      Roll: "Roll 2",
-      image: image2,
-    },
-    {
-      Name: "Candidate 3",
-      Roll: "Roll 3",
-      image: image3,
-    },
-    {
-      Name: "NOTA",
-      Roll: "NOTA",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
-
+  const candidates = SenddatatochildB;
+  console.log(`"nbvfdssdfghgfd----"${candidates}`)
   return (
     <div className="min-h-screen bg-gray-900">
       <section className="text-gray-400 bg-gray-900 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
             <h1 className="my-font font-bold text-2xl sm:text-4xl md:text-6xl title-font mb-2 text-white ">
-              ELECTRICAL ENGINEERING
+             {branchname}
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base md:text-xl lg:text-2xl">
               - - Cast your vote for the preferred candidate - -{" "}

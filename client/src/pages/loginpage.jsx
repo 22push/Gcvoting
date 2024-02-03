@@ -5,7 +5,7 @@ import Footer from '../components/footer'
 export default function LoginPage(props) {
   return (
     <>
-    <LoginPage1 sendDatatoparent = {props.senddatatoparent}/>
+    <LoginPage1 sendDataToParent={props.sendDataToParent} sendBranchtoparent = {props.sendbranchtoparent}/>
     </>
   )
 }

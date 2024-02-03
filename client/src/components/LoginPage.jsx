@@ -16,7 +16,7 @@ const LoginPage = (props) => {
     email = email.trim();
     return email.split("@")[1] === "iitbbs.ac.in";
   };
-  let providedEmail = "22ee01018@iitbbs.ac.in";
+  let providedEmail = "22PHD01018@iitbbs.ac.in";
   const [email2, setEmail2] = useState("");
   const [selectedCand, setSelectedCand] = useState(null);
   const Checkvalid = () => {
@@ -48,7 +48,13 @@ const LoginPage = (props) => {
               `Enter your branch (e.g.${validBranches.join(", ")} )`
             );
             const selectedBranch = branch ? branch.toUpperCase() : null;
-            return selectedBranch;
+            if(validBranches.includes(selectedBranch)){
+              return selectedBranch;
+            }
+            else{
+              selectBranch();
+            }
+            
           };
           return selectBranch();
         }
@@ -115,6 +121,8 @@ const LoginPage = (props) => {
       image: image3,
     });
     console.log(candidates);
+    props.sendDataToParent(candidates);
+    props.sendBranchtoparent(branch)
   };
 
   return (
