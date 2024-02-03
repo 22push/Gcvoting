@@ -5,12 +5,23 @@
 @tailwind utilities;
 
 .bg-clr {
+  background-repeat:cover;
   background: linear-gradient(
     155deg,
     rgb(246, 173, 2) 0%,
     rgb(224, 10, 10) 25%,
     rgb(118, 14, 159) 100%
   );
+}
+.containerLogin{
+  width: 100%;
+  padding: 10px;
+}
+@media screen and (max-width: 480px){
+  .containerLogin{
+      width: fit-content
+  }
+
 }
 
 .my-font {
