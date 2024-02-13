@@ -2,14 +2,79 @@ import React, { useState } from "react";
 import image1 from "../assets/img1.png";
 import image2 from "../assets/img2.jpeg";
 import image3 from "../assets/1mg3.jpeg";
+import {useNavigate} from "react-router-dom"
 
 import "./candidates.css";
 
-function Candidates({SenddatatochildB,sendbranchtochildB}) {
-  console.log(SenddatatochildB)
-  const [selectedCand, setSelectedCand] = useState(null);
-  const branch = sendbranchtochildB
-  console.log(branch)
+function Candidates({voter, setVoter}) {
+  // console.log(SenddatatochildB)
+  console.log(voter);
+  const navigate = useNavigate();
+  const [selectedCandidate, setSelectedCandidate] = useState({
+    email: voter.email,
+    dept: voter.dept,
+    vote: null
+  });
+  const branch = voter.dept
+  const [candidates, setCandidates] = useState(branch === "EE" ? [{
+    Name: "Sarim Ahmed",
+    Roll: "20EE01005",
+    image: image1,
+  }] : branch === "CE" ? [{
+    Name: "Prashant Gausingha",
+    Roll: "19CE02011",
+    image: image1,
+  }] : branch === "CSE" ? [{
+    Name: "M. Shishir Reddy",
+    Roll: "20CS01001",
+    image: image1,
+  }] : branch === "ECE" || branch === "MM" ? [{
+      Name: "Pokuri Sai Sathvik",
+      Roll: "20EC01031",
+      image: image1,
+  }] : branch === "MSc" || branch === "BSc" || branch === "BEd" ? [{
+    Name: "Sarwagya Kumar Goenka ",
+    Roll: "23PH03006 ",
+    image: image2,
+}, {
+  Name: "Gitanjali ",
+  Roll: "23hs03001 ",
+  image: image2,
+}, {
+  Name: "Shobhan Jena ",
+  Roll: "22CY05012 ",
+  image: image1,
+}] : branch === "MTech" ? [{
+  Name: "Pushpraj Singh ",
+  Roll: "22TS06010",
+  image: image1,
+}, {
+  Name: "Lalit Lohani",
+  Roll: "22cs06009",
+  image: image1,
+}, {
+  Name: "Abhishek Chopdekar ",
+  Roll: "22TS06017",
+  image: image1,
+}, {
+  Name: "Soumisree Chowdhury",
+  Roll: "22GT06005",
+  image: image2,
+}, {
+  Name: "Quadri Syed Farhan Ali",
+  Roll: "22se06010",
+  image: image1,
+}, {
+  Name: "Abhineet kumar raj",
+  Roll: "22SE06005",
+  image: image1,
+}] : branch === "ME" ? [{
+  Name: "Amuktha Malyada Gudibanda",
+  Roll: "20ME01027",
+  image: image2,
+}] : []);
+
+  // console.log(branch)
   const branchFullForms = {
     "EC": "Electrical Engineering",
     "EE": "Electrical Engineering",
@@ -21,19 +86,56 @@ function Candidates({SenddatatochildB,sendbranchtochildB}) {
     "BSC": "Bachelor of Science",
     "MTECH": "Master of Technology"
   };
-  const branchname = branchFullForms[branch.toUpperCase()]
+  const branchname = voter.dept;
+  // const
   const handleCheckboxChange = (event, roll) => {
-    event.stopPropagation();
-    console.log(roll);
+    // event.stopPropagation();
     const checkbox = document.getElementById(roll + 123);
     if (checkbox) {
-      checkbox.checked = true;
+      checkbox.checked = !checkbox.checked;
     }
-    setSelectedCand(roll);
+    if (checkbox.checked) {
+      setSelectedCandidate({
+        ...selectedCandidate,
+        vote: roll
+      })
+    } else {
+      setSelectedCandidate({
+        ...selectedCandidate,
+        vote: null
+      })
+    }
+    console.log(selectedCandidate);
+
   };
 
-  const candidates = SenddatatochildB;
-  console.log(`"nbvfdssdfghgfd----"${candidates}`)
+  const handleSubmit = () => {
+    console.log(selectedCandidate)
+    if (!selectedCandidate.vote) {
+      alert("Choose a candidate");
+    } else {
+      fetch("http://localhost:5000/api/vote/registerVote", {
+        method: "POST",
+        body:  JSON.stringify(selectedCandidate),
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(res => {
+        return res.json()
+      }).then(data => {
+        if (data.message === "Already Voted") {
+          alert("You have already voted");
+        } else if (data.message === "Voted Registered Successfully") {
+          navigate("/")
+        }
+      })
+    }
+  }
+  // const [candidates, setCandidates] = [{
+
+  // }]
+  // console.log(`"nbvfdssdfghgfd----"${candidates}`)
   return (
     <div className="min-h-screen bg-gray-900">
       <section className="text-gray-400 bg-gray-900 body-font">
@@ -95,7 +197,7 @@ function Candidates({SenddatatochildB,sendbranchtochildB}) {
             })}
           </div>
         </div>
-        <button className="submit12">Submit</button>
+        <button onClick={handleSubmit} className="submit12">Submit</button>
       </section>
     </div>
   );

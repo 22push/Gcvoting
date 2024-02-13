@@ -20,11 +20,15 @@ function App() {
   const handlebranchFromChildB = (data) => {
     setbranch(data);
   };
+  const [voter, setVoter] = useState({
+    name: "",
+    email: "",
+    dept: ""
+  })
   const router = createBrowserRouter([
     { path: '/', element: <Heropage /> },
-    { path: 'login', element: <LoginPage sendDataToParent={handleDataFromChildB} sendbranchtoparent = {handlebranchFromChildB} /> },
-    { path: 'vote', element: <Votingpage senddatatochildA= {dataFromChildB} sendbranchtochildA= {branch} /> },
-    {path: 'voted', element: <Voted />},
+    { path: 'login', element: <LoginPage voter={voter} setVoter = {setVoter} /> },
+    { path: 'vote', element: <Votingpage voter= {voter} setVoter= {setVoter} /> },
   ]);
   return (
     <RouterProvider router={router}>
