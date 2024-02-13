@@ -7,7 +7,7 @@ import LoginPage from './pages/loginpage';
 import Votingpage from './pages/votingpage';
 import Finalpage from './pages/finalpage';
 import { CandidateProvider } from './UI/createcontext';
-
+import Voted from './components/ThanksForVote.jsx'
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
     { path: '/', element: <Heropage /> },
     { path: 'login', element: <LoginPage sendDataToParent={handleDataFromChildB} sendbranchtoparent = {handlebranchFromChildB} /> },
     { path: 'vote', element: <Votingpage senddatatochildA= {dataFromChildB} sendbranchtochildA= {branch} /> },
+    {path: 'voted', element: <Voted />},
   ]);
   return (
     <RouterProvider router={router}>
