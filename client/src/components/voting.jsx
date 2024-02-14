@@ -52,20 +52,10 @@ function Candidates({ voter, setVoter }) {
       : branch === "MSc" || branch === "BSc" || branch === "BEd"
       ? [
           {
-            Name: "Sarwagya Kumar Goenka ",
-            Roll: "23PH03006 ",
-            image: image2,
-          },
-          {
-            Name: "Gitanjali ",
-            Roll: "23hs03001 ",
-            image: image2,
-          },
-          {
             Name: "Shobhan Jena ",
             Roll: "22CY05012 ",
             image: image1,
-          },
+          }
         ]
       : branch === "MTech"
       ? [
@@ -78,27 +68,7 @@ function Candidates({ voter, setVoter }) {
             Name: "Lalit Lohani",
             Roll: "22cs06009",
             image: image1,
-          },
-          {
-            Name: "Abhishek Chopdekar ",
-            Roll: "22TS06017",
-            image: image1,
-          },
-          {
-            Name: "Soumisree Chowdhury",
-            Roll: "22GT06005",
-            image: image2,
-          },
-          {
-            Name: "Quadri Syed Farhan Ali",
-            Roll: "22se06010",
-            image: image1,
-          },
-          {
-            Name: "Abhineet kumar raj",
-            Roll: "22SE06005",
-            image: image1,
-          },
+          }
         ]
       : branch === "ME"
       ? [
