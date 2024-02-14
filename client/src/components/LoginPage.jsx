@@ -9,10 +9,10 @@ import image2 from "./../assets/img2.jpeg";
 import image3 from "./../assets/1mg3.jpeg";
 import { useState, useRef } from "react";
 
-const LoginPage = ({voter, setVoter}) => {
+const LoginPage = ({ voter, setVoter }) => {
   // const providedEmail1 = useRef();
   const navigate = useNavigate();
-  
+
   // const checkEmail = (email) => {
   //   email = email.trim();
   //   return email.split("@")[1] === "iitbbs.ac.in";
@@ -27,7 +27,7 @@ const LoginPage = ({voter, setVoter}) => {
       console.log("invalid");
       alert("Enter a valid email or try to login with your college id");
     }
-  }
+  };
   // const handleCheckboxChange = (e) => {
   //   console.log(e);
   //   setSelectedCand(e);
@@ -67,15 +67,14 @@ const LoginPage = ({voter, setVoter}) => {
   //           else{
   //             selectBranch();
   //           }
-            
+
   //         };
   //         return selectBranch();
   //       }
   //     } else {
-        
+
   //     }
   //   };
-    
 
   //   let arr = [
   //     {
@@ -133,12 +132,11 @@ const LoginPage = ({voter, setVoter}) => {
   //   props.sendBranchtoparent(branch)
   // };
 
-  
   return (
     <div>
-      <section className="bg-clr flex">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen md:h-screen lg:py-0">
-          <a
+      <section className="bg-gradient-to-r from-orange-400  via-white to-sky-600 flex">
+        <div className="flex flex-col items-center px-6 py-8 mx-auto min-h-screen md:h-screen lg:py-0 mt-0">
+          {/* <a
             href="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
           >
@@ -148,7 +146,15 @@ const LoginPage = ({voter, setVoter}) => {
               alt="logo"
             />
             <p className="text-5xl my-font">General Championship 2024</p>
-          </a>
+          </a> */}
+          <img
+            className="w-64 h-64 m-20 rounded-full "
+            src={gc_logo}
+            alt="logo"
+          />
+          <h1 className="text-5xl my-font text-center font-semibold text-gray-900 dark:text-clr">
+            General Championship 2024
+          </h1>
 
           <div className="rounded-lg shadow border md:mt-6 lg:mt-8 xl:p-0 bg-blend-darken border-green-400 border-2 px-5 py-4 hover:text-green-600">
             <a

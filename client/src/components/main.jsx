@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './main.module.css';
-import img from './../assets/kuch.jpg';
+import img from './../assets/bg-venue.jpg';
 // import { GoogleOAuthProvider } from '@react-oauth/google';
 // import Google from './../../UI/google.tsx'
 const Main = () => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-      <img src={img} alt="" />
+      <img src={img} alt="Gc-bg" />
       </div>
       <div id="content" className={styles.signupContainer}>
         <h1 className={styles.contentHeading}>General Championship</h1>

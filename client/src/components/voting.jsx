@@ -2,89 +2,126 @@ import React, { useState } from "react";
 import image1 from "../assets/img1.png";
 import image2 from "../assets/img2.jpeg";
 import image3 from "../assets/1mg3.jpeg";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import "./candidates.css";
 
-function Candidates({voter, setVoter}) {
+function Candidates({ voter, setVoter }) {
   // console.log(SenddatatochildB)
   console.log(voter);
   const navigate = useNavigate();
   const [selectedCandidate, setSelectedCandidate] = useState({
     email: voter.email,
     dept: voter.dept,
-    vote: null
+    vote: null,
   });
-  const branch = voter.dept
-  const [candidates, setCandidates] = useState(branch === "EE" ? [{
-    Name: "Sarim Ahmed",
-    Roll: "20EE01005",
-    image: image1,
-  }] : branch === "CE" ? [{
-    Name: "Prashant Gausingha",
-    Roll: "19CE02011",
-    image: image1,
-  }] : branch === "CSE" ? [{
-    Name: "M. Shishir Reddy",
-    Roll: "20CS01001",
-    image: image1,
-  }] : branch === "ECE" || branch === "MM" ? [{
-      Name: "Pokuri Sai Sathvik",
-      Roll: "20EC01031",
-      image: image1,
-  }] : branch === "MSc" || branch === "BSc" || branch === "BEd" ? [{
-    Name: "Sarwagya Kumar Goenka ",
-    Roll: "23PH03006 ",
-    image: image2,
-}, {
-  Name: "Gitanjali ",
-  Roll: "23hs03001 ",
-  image: image2,
-}, {
-  Name: "Shobhan Jena ",
-  Roll: "22CY05012 ",
-  image: image1,
-}] : branch === "MTech" ? [{
-  Name: "Pushpraj Singh ",
-  Roll: "22TS06010",
-  image: image1,
-}, {
-  Name: "Lalit Lohani",
-  Roll: "22cs06009",
-  image: image1,
-}, {
-  Name: "Abhishek Chopdekar ",
-  Roll: "22TS06017",
-  image: image1,
-}, {
-  Name: "Soumisree Chowdhury",
-  Roll: "22GT06005",
-  image: image2,
-}, {
-  Name: "Quadri Syed Farhan Ali",
-  Roll: "22se06010",
-  image: image1,
-}, {
-  Name: "Abhineet kumar raj",
-  Roll: "22SE06005",
-  image: image1,
-}] : branch === "ME" ? [{
-  Name: "Amuktha Malyada Gudibanda",
-  Roll: "20ME01027",
-  image: image2,
-}] : []);
+  const branch = voter.dept;
+  const [candidates, setCandidates] = useState(
+    branch === "EE"
+      ? [
+          {
+            Name: "Sarim Ahmed",
+            Roll: "20EE01005",
+            image: image1,
+          },
+        ]
+      : branch === "CE"
+      ? [
+          {
+            Name: "Prashant Gausingha",
+            Roll: "19CE02011",
+            image: image1,
+          },
+        ]
+      : branch === "CSE"
+      ? [
+          {
+            Name: "M. Shishir Reddy",
+            Roll: "20CS01001",
+            image: image1,
+          },
+        ]
+      : branch === "ECE" || branch === "MM"
+      ? [
+          {
+            Name: "Pokuri Sai Sathvik",
+            Roll: "20EC01031",
+            image: image1,
+          },
+        ]
+      : branch === "MSc" || branch === "BSc" || branch === "BEd"
+      ? [
+          {
+            Name: "Sarwagya Kumar Goenka ",
+            Roll: "23PH03006 ",
+            image: image2,
+          },
+          {
+            Name: "Gitanjali ",
+            Roll: "23hs03001 ",
+            image: image2,
+          },
+          {
+            Name: "Shobhan Jena ",
+            Roll: "22CY05012 ",
+            image: image1,
+          },
+        ]
+      : branch === "MTech"
+      ? [
+          {
+            Name: "Pushpraj Singh ",
+            Roll: "22TS06010",
+            image: image1,
+          },
+          {
+            Name: "Lalit Lohani",
+            Roll: "22cs06009",
+            image: image1,
+          },
+          {
+            Name: "Abhishek Chopdekar ",
+            Roll: "22TS06017",
+            image: image1,
+          },
+          {
+            Name: "Soumisree Chowdhury",
+            Roll: "22GT06005",
+            image: image2,
+          },
+          {
+            Name: "Quadri Syed Farhan Ali",
+            Roll: "22se06010",
+            image: image1,
+          },
+          {
+            Name: "Abhineet kumar raj",
+            Roll: "22SE06005",
+            image: image1,
+          },
+        ]
+      : branch === "ME"
+      ? [
+          {
+            Name: "Amuktha Malyada Gudibanda",
+            Roll: "20ME01027",
+            image: image2,
+          },
+        ]
+      : []
+  );
 
   // console.log(branch)
   const branchFullForms = {
-    "EC": "Electrical Engineering",
-    "EE": "Electrical Engineering",
-    "ME": "Mechanical Engineering",
-    "CS": "Computer Science",
-    "CE": "Civil Engineering",
-    "MM": "Metallurgical and Materials Engineering",
-    "PHD": "Doctor of Philosophy",
-    "BSC": "Bachelor of Science",
-    "MTECH": "Master of Technology"
+    EC: "Electrical Engineering",
+    EE: "Electrical Engineering",
+    ME: "Mechanical Engineering",
+    CS: "Computer Science",
+    CE: "Civil Engineering",
+    MM: "Metallurgical and Materials Engineering",
+    PHD: "Doctor of Philosophy",
+    BSC: "Bachelor of Science",
+    MTECH: "Master of Technology",
   };
   const branchname = voter.dept;
   // const
@@ -97,41 +134,42 @@ function Candidates({voter, setVoter}) {
     if (checkbox.checked) {
       setSelectedCandidate({
         ...selectedCandidate,
-        vote: roll
-      })
+        vote: roll,
+      });
     } else {
       setSelectedCandidate({
         ...selectedCandidate,
-        vote: null
-      })
+        vote: null,
+      });
     }
     console.log(selectedCandidate);
-
   };
 
   const handleSubmit = () => {
-    console.log(selectedCandidate)
+    console.log(selectedCandidate);
     if (!selectedCandidate.vote) {
       alert("Choose a candidate");
     } else {
       fetch("http://localhost:5000/api/vote/registerVote", {
         method: "POST",
-        body:  JSON.stringify(selectedCandidate),
+        body: JSON.stringify(selectedCandidate),
         mode: "cors",
         headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(res => {
-        return res.json()
-      }).then(data => {
-        if (data.message === "Already Voted") {
-          alert("You have already voted");
-        } else if (data.message === "Voted Registered Successfully") {
-          navigate("/")
-        }
+          "Content-Type": "application/json",
+        },
       })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data.message === "Already Voted") {
+            alert("You have already voted");
+          } else if (data.message === "Voted Registered Successfully") {
+            navigate("/");
+          }
+        });
     }
-  }
+  };
   // const [candidates, setCandidates] = [{
 
   // }]
@@ -142,7 +180,7 @@ function Candidates({voter, setVoter}) {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
             <h1 className="my-font font-bold text-2xl sm:text-4xl md:text-6xl title-font mb-2 text-white ">
-             {branchname}
+              {branchname}
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base md:text-xl lg:text-2xl">
               - - Cast your vote for the preferred candidate - -{" "}
@@ -197,7 +235,9 @@ function Candidates({voter, setVoter}) {
             })}
           </div>
         </div>
-        <button onClick={handleSubmit} className="submit12">Submit</button>
+        <button onClick={handleSubmit} className="submit12">
+          Submit
+        </button>
       </section>
     </div>
   );
